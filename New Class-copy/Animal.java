@@ -13,8 +13,7 @@ public class Animal extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
-    {
-        int score = 0; 
+    { 
         if(Greenfoot.isKeyDown("a"))
             {
                 move(-5); 
@@ -24,17 +23,28 @@ public class Animal extends Actor
             {
                 move(5); 
             }
+            
+        if(Greenfoot.isKeyDown("s"))
+            {
+                turn(2); 
+                move(2); 
+            }
+            
+        if(Greenfoot.isKeyDown("w"))
+            {
+                turn(2); 
+                move(2); 
+            }
+        eat();
     }
     
-    public void move (int distance) { 
-        move(10); 
-    }    
     
     public void eat() {
         if(isTouching(Apple.class)){
             removeTouching(Apple.class); 
-            int score = 0; 
-            score++; 
+            MyWorld world = (MyWorld) getWorld(); 
+            world.spawnApple(); 
+            world.increaseScore(); 
         }
     }
 }

@@ -8,11 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
+    private int score = 0; 
+    Label scoreLabel; 
+    
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -24,9 +22,10 @@ public class MyWorld extends World
         //Create a Label 
         scoreLabel = new Label("0", 20); 
         addObject(scoreLabel, 50, 50); 
+        
     }
     
-     public void increaseScore()
+    public void increaseScore()
     {
         score++; 
         scoreLabel.setLocation(0, 80); 
@@ -44,4 +43,5 @@ public class MyWorld extends World
         Apple apple = new Apple (); 
         addObject(apple, x, y); 
     }
+    
 }
