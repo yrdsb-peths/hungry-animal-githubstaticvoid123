@@ -9,18 +9,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     private int score = 0; 
-    Label scoreLabel; 
+    Label scoreLabel;
     
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(600, 400, 1, false); 
         Animal elephant = new Animal(); 
         addObject(elephant, 300, 300); 
         spawnApple(); 
         
         //Create a Label 
-        scoreLabel = new Label("0", 20); 
+        scoreLabel = new Label("0", 80); 
         addObject(scoreLabel, 50, 50); 
         
     }
@@ -28,14 +28,15 @@ public class MyWorld extends World
     public void increaseScore()
     {
         score++; 
-        scoreLabel.setLocation(0, 80); 
+        scoreLabel.setValue(score);
     }
     
-    public void gameOver() 
+    public void gameOver()
     {
         Label gameOverLabel = new Label("Game Over", 100); 
         addObject(gameOverLabel, 300, 200); 
     }
+    
     public void spawnApple()
     {
         int x = Greenfoot.getRandomNumber(600); 

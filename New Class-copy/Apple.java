@@ -15,15 +15,14 @@ public class Apple extends Actor
     public void act()
     {
         setLocation(getX(), getY() + 2); 
-    }
-    
-    public void changeScore() 
-    {
+        
         MyWorld world = (MyWorld) getWorld(); 
-        if(getY() <= world.getHeight())
+        if(getY() >= world.getHeight())
         {
             world.gameOver(); 
             world.removeObject(this); 
         }
     }
+    
+    
 }
