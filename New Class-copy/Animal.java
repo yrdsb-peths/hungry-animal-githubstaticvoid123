@@ -12,6 +12,8 @@ public class Animal extends Actor
      * Act - do whatever the Animal wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    GreenfootSound sheepSound = new GreenfootSound ("Sheep-Lamb-Bah-From-Far-Away-C-www.fesliyanstudios.com.mp3");
+    
     public void act()
     { 
         if(Greenfoot.isKeyDown("a"))
@@ -45,6 +47,7 @@ public class Animal extends Actor
             MyWorld world = (MyWorld) getWorld(); 
             world.spawnApple(); 
             world.increaseScore(); 
+            sheepSound.play(); 
         }
     }
 }
