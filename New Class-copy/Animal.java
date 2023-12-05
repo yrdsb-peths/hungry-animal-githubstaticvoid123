@@ -13,16 +13,29 @@ public class Animal extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootSound sheepSound = new GreenfootSound ("Sheep-Lamb-Bah-From-Far-Away-C-www.fesliyanstudios.com.mp3");
-    GreenfootImage [] idle= new GreenfootImage[4]; 
+    GreenfootImage [] idleRight = new GreenfootImage[4]; 
+    GreenfootImage [] idleLeft = new GreenfootImage[4]; 
+    String facing = "right"; 
+    SimpleTimer animationTimer = new SimpleTimer(); 
     
     public Animal()
     {
-        for(int i = 0; i < idle.length; i++)
+        
+        
+        for(int i = 0; i < idleRight.length; i++)
         {
-            idle[i] = new GreenfootImage("images/Sheep_idle/tile00" + i + ".png"); 
-            idle[i] = new
+            idleRight[i] = new GreenfootImage("images/Sheep_idle/tile00" + i + ".png"); 
+            idleRight[i].scale(50, 50); 
         }
-        setImage(idle[0]); 
+        
+        for(int i = 0; i < idleLeft.length; i++)
+        {
+            idleLeft[i] = new GreenfootImage("images/Sheep_idle/tile00" + i + ".png");
+            idleLeft[i].mirrorHorizontally(); 
+            idleLeft[i].scale(50, 50); 
+        }
+        
+        setImage(idleRight[0]); 
         
     }
     
@@ -33,11 +46,13 @@ public class Animal extends Actor
         if(Greenfoot.isKeyDown("a"))
             {
                 move(-5); 
+                facing = "left"; 
             }
         
         if(Greenfoot.isKeyDown("d"))
             {
                 move(5); 
+                facing = "right"; 
             }
             
         if(Greenfoot.isKeyDown("s"))
@@ -58,8 +73,22 @@ public class Animal extends Actor
     int imageIndex = 0; 
     public void animateSheep()
     {
-        setImage(idle[imageIndex]); 
-        imageIndex = (imageIndex + 1) % idle.length; 
+        if (animationTimer.millisElapsed() < 200)
+        {
+            return; 
+        }
+        
+        animationTimer.mark(); 
+        if(facing.equals("right"))
+        {
+            setImage(idleRight[imageIndex]); 
+            imageIndex = (imageIndex + 1) % idleRight.length; 
+        }
+        else
+        {
+            setImage(idleLeft[imageIndex]); 
+            imageIndex = (imageIndex + 1) % idleLeft.length; 
+        }
     }
     
     public void eat() {
