@@ -13,6 +13,20 @@ public class Animal extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootSound sheepSound = new GreenfootSound ("Sheep-Lamb-Bah-From-Far-Away-C-www.fesliyanstudios.com.mp3");
+    GreenfootImage [] idle= new GreenfootImage[4]; 
+    
+    public Animal()
+    {
+        for(int i = 0; i < idle.length; i++)
+        {
+            idle[i] = new GreenfootImage("images/Sheep_idle/tile00" + i + ".png"); 
+            idle[i] = new
+        }
+        setImage(idle[0]); 
+        
+    }
+    
+    
     
     public void act()
     { 
@@ -38,8 +52,15 @@ public class Animal extends Actor
                 move(2); 
             }
         eat();
+        animateSheep(); 
     }
     
+    int imageIndex = 0; 
+    public void animateSheep()
+    {
+        setImage(idle[imageIndex]); 
+        imageIndex = (imageIndex + 1) % idle.length; 
+    }
     
     public void eat() {
         if(isTouching(Apple.class)){
