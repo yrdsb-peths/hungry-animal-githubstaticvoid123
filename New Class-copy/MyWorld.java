@@ -10,6 +10,7 @@ public class MyWorld extends World
 {
     private int score = 0; 
     Label scoreLabel;
+    GreenfootSound goSound = new GreenfootSound ("8d82b5_Sonic_Game_Over_Sound_Effect.mp3"); 
     
     public MyWorld()
     {    
@@ -18,6 +19,8 @@ public class MyWorld extends World
         Animal elephant = new Animal(); 
         addObject(elephant, 300, 300); 
         spawnApple(); 
+        spawnApple2(); 
+        badApple(); 
         
         //Create a Label 
         scoreLabel = new Label("0", 80); 
@@ -31,10 +34,17 @@ public class MyWorld extends World
         scoreLabel.setValue(score);
     }
     
+    public void decreaseScore()
+    {
+        score--; 
+        scoreLabel.setValue(score); 
+    }
+    
     public void gameOver()
     {
         Label gameOverLabel = new Label("Game Over", 100); 
         addObject(gameOverLabel, 300, 200); 
+        goSound.play(); 
     }
     
     public void spawnApple()
@@ -43,6 +53,22 @@ public class MyWorld extends World
         int y = 0; 
         Apple apple = new Apple (); 
         addObject(apple, x, y); 
+    }
+    
+    public void badApple() 
+    {
+        int x = Greenfoot.getRandomNumber(600); 
+        int y = 0; 
+        BadApple bApple = new BadApple(); 
+        addObject(bApple, x, y); 
+    }
+    
+    public void spawnApple2() 
+    {
+        int x = Greenfoot.getRandomNumber(600); 
+        int y = 0; 
+        Apple apple2 = new Apple(); 
+        addObject(apple2, x, y); 
     }
     
 }

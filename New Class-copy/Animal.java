@@ -67,6 +67,7 @@ public class Animal extends Actor
                 move(2); 
             }
         eat();
+        badEat(); 
         animateSheep(); 
     }
     
@@ -98,6 +99,15 @@ public class Animal extends Actor
             world.spawnApple(); 
             world.increaseScore(); 
             sheepSound.play(); 
+        }
+    }
+    
+    public void badEat() {
+        if(isTouching(BadApple.class)){
+            removeTouching(BadApple.class); 
+            MyWorld world = (MyWorld) getWorld(); 
+            world.gameOver(); 
+            world.removeObject(this);
         }
     }
 }
