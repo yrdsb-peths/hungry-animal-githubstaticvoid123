@@ -63,7 +63,7 @@ public class Animal extends Actor
             
         if(Greenfoot.isKeyDown("w"))
             {
-                turn(2); 
+                turn(-2); 
                 move(2); 
             }
         eat();
