@@ -14,7 +14,7 @@ public class BadApple extends Actor
      */
     public void act()
     {
-        setLocation(getX(), getY() + 2); 
+        setLocation(getX(), getY() + 5); 
         
         MyWorld world = (MyWorld) getWorld(); 
         if(getY() >= world.getHeight())

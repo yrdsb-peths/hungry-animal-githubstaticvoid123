@@ -10,7 +10,7 @@ public class MyWorld extends World
 {
     private int score = 0; 
     Label scoreLabel;
-    GreenfootSound goSound = new GreenfootSound ("8d82b5_Sonic_Game_Over_Sound_Effect.mp3"); 
+    GreenfootSound goSound = new GreenfootSound ("rock-destroy-6409.mp3"); 
     
     public MyWorld()
     {    
@@ -42,9 +42,23 @@ public class MyWorld extends World
     
     public void gameOver()
     {
+        reStart(); 
         Label gameOverLabel = new Label("Game Over", 100); 
-        addObject(gameOverLabel, 300, 200); 
+        addObject(gameOverLabel, 300, 200);  
         goSound.play(); 
+        Label doOver = new Label("Press 'f' to try again", 50); 
+        addObject(doOver, 300, 300);  
+        
+        
+    }
+    
+    public void reStart()
+    {
+        if(Greenfoot.isKeyDown("f"))
+            {
+                TitleScreen tryAgain = new TitleScreen(); 
+                Greenfoot.setWorld(tryAgain); 
+            }
     }
     
     public void spawnApple()
